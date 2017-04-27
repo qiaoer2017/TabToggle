@@ -44,12 +44,32 @@
             padding: 0 1px;
         }
 
-        .title li:hover, .title .current {
+        .title .current {
             background: #ffffff;
             border-left: 1px solid #dddddd;
             border-right: 1px solid #dddddd;
             border-bottom-color: #ffffff;
             padding: 0;
+            color: #ff8803;
+        }
+
+        .content ul {
+            height: 300px;
+        }
+
+        .content ul li, .content ul li div {
+            height: 300px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+        }
+
+        .content li {
+            display: none;
+        }
+
+        .content .current-item {
+            display: block;
         }
     </style>
 </head>
@@ -57,18 +77,53 @@
 <div class="container">
     <div class="title">
         <ul>
-            <li class="">item 1</li>
+            <li class="current">item 1</li>
             <li>item 2</li>
             <li>item 3</li>
             <li>item 4</li>
             <li>item 5</li>
         </ul>
     </div>
-    <div class="content"></div>
+    <div class="content">
+        <ul>
+            <li class="current-item">
+                <div>第1个</div>
+            </li>
+            <li>
+                <div>第2个</div>
+            </li>
+            <li>
+                <div>第3个</div>
+            </li>
+            <li>
+                <div>第4个</div>
+            </li>
+            <li>
+                <div>第5个</div>
+            </li>
+        </ul>
+    </div>
 </div>
 
 <script>
     window.onload = function () {
+        var titleLists = document.getElementsByClassName("title")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
+        var contentLists = document.getElementsByClassName("content")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
+        for (var i = 0; i < titleLists.length; i++) {
+            titleLists[i].id = "item" + i;
+        }
+        for (var i = 0; i < titleLists.length; i++) {
+            titleLists[i].onmouseover = function () {
+                for (var j = 0; j < titleLists.length; j++) {
+                    titleLists[j].className = "";
+                    contentLists[j].className = "";
+                }
+                this.className = "current";
+                var currentIndex = parseInt(this.id.substr(4));
+                contentLists[currentIndex].className = "current-item";
+            }
+        }
+
 
     };
 
