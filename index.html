@@ -111,20 +111,15 @@
         var contentLists = document.getElementsByClassName("content")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
         for (var i = 0; i < titleLists.length; i++) {
             titleLists[i].id = "item" + i;
-        }
-        for (var i = 0; i < titleLists.length; i++) {
             titleLists[i].onmouseover = function () {
                 for (var j = 0; j < titleLists.length; j++) {
                     titleLists[j].className = "";
                     contentLists[j].className = "";
                 }
                 this.className = "current";
-                var currentIndex = parseInt(this.id.substr(4));
-                contentLists[currentIndex].className = "current-item";
+                contentLists[this.id.substr(4)].className = "current-item";
             }
         }
-
-
     };
 
 </script>
