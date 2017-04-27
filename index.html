@@ -7,29 +7,49 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        body{
-            font-family:"SF UI Text";
+        body {
+            font-family: "SF UI Text";
         }
+
         .container {
-            width: 500px;
+            width: 497px;
             height: 350px;
-            margin: 0 auto;
+            margin: 10px auto;
+            border: 1px solid #dddddd;
+            overflow: hidden;
         }
-        .title{
-            width: 100%;
-            height:50px;
+
+        .title {
+            height: 50px;
+            width: 501px;
             background: #eee;
+            left: -1px;
+            position: relative;
         }
-        .title ul{
-            height:100%;
+
+        .title ul {
+            position: absolute;
+            left: -1px;
         }
-        .title li{
+
+        .title li {
             cursor: pointer;
             float: left;
             height: 100%;
-            width:20%;
-            line-height:50px;
+            width: 98px;
+            line-height: 50px;
             text-align: center;
+            font-size: 14px;
+            border-bottom: 1px solid #dddddd;
+            padding: 0 1px;
+        }
+
+        .title li:hover, .title .current {
+            background: #ffffff;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-bottom-color: #ffffff;
+            padding: 0;
         }
     </style>
 </head>
@@ -37,11 +57,11 @@
 <div class="container">
     <div class="title">
         <ul>
-            <li>item1</li>
-            <li>item2</li>
-            <li>item3</li>
-            <li>item4</li>
-            <li>item5</li>
+            <li class="">item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+            <li>item 4</li>
+            <li>item 5</li>
         </ul>
     </div>
     <div class="content"></div>
