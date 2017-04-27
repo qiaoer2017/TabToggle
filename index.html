@@ -109,15 +109,27 @@
     window.onload = function () {
         var titleLists = document.getElementsByClassName("title")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
         var contentLists = document.getElementsByClassName("content")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
+
+        var timer = null;
         for (var i = 0; i < titleLists.length; i++) {
             titleLists[i].id = "item" + i;
             titleLists[i].onmouseover = function () {
-                for (var j = 0; j < titleLists.length; j++) {
-                    titleLists[j].className = "";
-                    contentLists[j].className = "";
+                var _this = this;
+                if (timer) {
+                    clearTimeout(timer);
+                    timer = null;
                 }
-                this.className = "current";
-                contentLists[this.id.substr(4)].className = "current-item";
+                timer = setTimeout(function () {
+                    for (var j = 0; j < titleLists.length; j++) {
+                        titleLists[j].className = "";
+                        contentLists[j].className = "";
+                    }
+
+                    _this.className = "current";
+                    contentLists[_this.id.substr(4)].className = "current-item";
+                }, 300);
+
+
             }
         }
     };
